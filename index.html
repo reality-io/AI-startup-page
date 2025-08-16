@@ -410,21 +410,34 @@
 
         .demo-video {
             position: relative;
-        }
-
-        .video-placeholder {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border-radius: 20px;
-            padding: 4rem 2rem;
-            text-align: center;
-            color: white;
-            cursor: pointer;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
         }
 
-        .video-placeholder:hover {
+        .demo-video:hover {
             transform: scale(1.02);
             box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .demo-video-player {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 20px;
+        }
+
+        .video-fallback {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
         }
 
         .play-button {
@@ -810,11 +823,14 @@
             
             <div class="demo-container fade-in">
                 <div class="demo-video">
-                    <div class="video-placeholder">
-                        <div class="play-button">▶</div>
-                        <p>Interactive Demo</p>
-                        <small>See AI-plitude in action</small>
-                    </div>
+                    <video class="demo-video-player" autoplay muted loop playsinline>
+                        <source src="demo-video.mp4" type="video/mp4">
+                        <div class="video-fallback">
+                            <div class="play-button">▶</div>
+                            <p>Interactive Demo</p>
+                            <small>Video not supported by your browser</small>
+                        </div>
+                    </video>
                 </div>
                 
                 <div class="demo-features">
@@ -1062,10 +1078,8 @@ This message was sent through the AI-plitude contact form.`
             }, 3000);
         });
 
-        // Demo video click handler
-        document.querySelector('.video-placeholder')?.addEventListener('click', function() {
-            alert('Demo video would open here. You can replace this with your actual demo video or interactive demo.');
-        });
+        // Demo video click handler (removed since we now have actual video)
+        // Video will autoplay and loop automatically
 
         // Theme Toggle Functionality
         const themeToggle = document.getElementById('themeToggle');
