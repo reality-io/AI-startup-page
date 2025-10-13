@@ -203,13 +203,17 @@
 
         /* Hero Section */
         .hero {
-            min-height: 100vh;
+            min-height: 60vh; /* Reduced from 100vh */
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: center; /* Center content vertically */
+            padding: 4rem 5%; /* Reduced padding */
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             position: relative;
             overflow: hidden;
+            text-align: center;
+            border-radius: 10px;
         }
 
         .hero::before {
@@ -232,23 +236,27 @@
             text-align: center;
             color: white;
             max-width: 800px;
-            padding: 2rem;
+            width: 100%;
+            padding: 1rem 0; /* Reduced padding */
             position: relative;
             z-index: 2;
+            margin: 0; /* Removed bottom margin */
         }
 
         .hero h1 {
             font-size: 4rem;
             font-weight: 700;
-            margin-bottom: 1.5rem;
+            margin: 0 auto 2rem;
             opacity: 0;
+            max-width: 800px;
             animation: slideUp 1s ease forwards 0.5s;
         }
 
         .hero p {
             font-size: 1.25rem;
-            margin-bottom: 2rem;
+            margin: 2rem auto 2rem;
             opacity: 0;
+            max-width: 800px;
             animation: slideUp 1s ease forwards 0.7s;
         }
 
@@ -297,6 +305,70 @@
             background: white;
             color: #667eea;
             transform: translateY(-3px);
+        }
+
+        /* Cost Savings Badge */
+        .cost-savings-badge {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 50px;
+            padding: 0.75rem 1.5rem;
+            margin-top: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: fit-content;
+            animation: pulse 2s infinite;
+            border: 2px solid #4CAF50;
+        }
+
+        .savings-icon {
+            font-size: 1.5rem;
+            margin-right: 0.75rem;
+            color: #4CAF50;
+        }
+
+        .savings-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .savings-amount {
+            font-weight: 700;
+            color: #2E7D32;
+            font-size: 1.1rem;
+        }
+
+        .savings-desc {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Feature card badge variant */
+        .feature-card .cost-savings-badge {
+            margin: 1.5rem auto 0;
+            max-width: 85%;
+            padding: 0.5rem 1rem;
+            border: 1px solid #4CAF50;
+            animation: none;
+        }
+
+        .feature-card .savings-icon {
+            font-size: 1.2rem;
+        }
+
+        .feature-card .savings-amount {
+            font-size: 0.9rem;
+        }
+
+        .feature-card .savings-desc {
+            font-size: 0.8rem;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
 
         @keyframes slideUp {
@@ -408,22 +480,46 @@
             margin-top: 4rem;
         }
 
-        .demo-video {
+        }
+
+        .video-showcase {
+            width: 100%;
+            padding: 2rem 5%;
+            background: white;
+            display: flex;
+            justify-content: center;
             position: relative;
+            z-index: 2;
+        }
+
+        .demo-video-link {
+            display: block;
+            text-decoration: none;
+            width: 100%;
+            max-width: 840px;
+            margin: 0 auto;
+        }
+
+        .demo-video {
+            width: 100%;
+            max-width: 840px;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
+            background: rgb(0, 0, 0);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 3;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .demo-video:hover {
-            transform: scale(1.02);
+            transform: scale(1.5);
             box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
         }
 
         .demo-video-player {
             width: 100%;
-            height: auto;
+            height: 100%;
             display: block;
             border-radius: 20px;
         }
@@ -773,21 +869,37 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
+        <h1>AI Chat optimized.</h1>
         <div class="hero-content">
-            <h1>Custom LLM Deployment Made Simple</h1>
-            <p>Deploy and customize powerful Large Language Models tailored to your business needs. From cloud-hosted solutions to self-contained private servers, we deliver GDPR-compliant AI that scales with your requirements.</p>
+            <p>We host our own AI Chat. You can too! 😊 Deploy and customize powerful Large Language Models tailored to your business needs. Unlimited and private.</p>
             <div class="cta-buttons">
-                <a href="https://m.aiplitu.de" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Live Demo</a>
+                <a href="https://aiplitu.de" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Live Demo</a>
                 <a href="#contact" class="btn btn-secondary">Contact Us</a>
             </div>
         </div>
     </section>
+    
+    <!-- Video Showcase -->
+    <div class="video-showcase">
+        <a href="https://aiplitu.de/" target="_blank" rel="noopener noreferrer" class="demo-video-link">
+            <div class="demo-video">
+                <video class="demo-video-player" autoplay muted loop playsinline>
+                    <source src="demo-video3.mp4" type="video/mp4">
+                    <div class="video-fallback">
+                        <div class="play-button">▶</div>
+                        <p>Interactive Demo</p>
+                        <small>Video not supported by your browser. Click to visit aiplitu.de</small>
+                    </div>
+                </video>
+            </div>
+        </a>
+    </div>
 
     <!-- Features Section -->
     <section class="features" id="features">
         <div class="container">
             <div class="fade-in">
-                <h2 class="section-title">Why Choose AI-plitude</h2>
+                <h2 class="section-title">Why choose us?</h2>
                 <p class="section-subtitle">Enterprise-grade LLM deployment solutions designed for privacy, compliance, and scalability</p>
             </div>
 
@@ -799,15 +911,15 @@
                 </div>
 
                 <div class="feature-card fade-in">
-                    <div class="feature-icon">🔒</div>
-                    <h3>Private Server Solutions</h3>
-                    <p>Maximum data privacy with our self-contained server appliances. Keep your sensitive data on-premises while leveraging cutting-edge AI capabilities.</p>
+                    <div class="feature-icon">💰</div>
+                    <h3>Reduce costs</h3>
+                    <p>Dramatically reduce your AI infrastructure costs with our optimized solutions. <strong>Save up to 50%</strong> on your AI operations while maintaining top performance and reliability.</p>
                 </div>
 
                 <div class="feature-card fade-in">
                     <div class="feature-icon">🛡️</div>
                     <h3>GDPR Compliant</h3>
-                    <p>Fully compliant with European data protection regulations. Enterprise-grade security, data sovereignty, and transparent privacy controls built-in.</p>
+                    <p>Fully compliant with European data protection regulations. Enterprise-grade security, data sovereignty, and transparent privacy controls built-in</p>
                 </div>
             </div>
         </div>
@@ -822,16 +934,6 @@
             </div>
             
             <div class="demo-container fade-in">
-                <div class="demo-video">
-                    <video class="demo-video-player" autoplay muted loop playsinline>
-                        <source src="demo-video.mp4" type="video/mp4">
-                        <div class="video-fallback">
-                            <div class="play-button">▶</div>
-                            <p>Interactive Demo</p>
-                            <small>Video not supported by your browser</small>
-                        </div>
-                    </video>
-                </div>
                 
                 <div class="demo-features">
                     <div class="demo-feature">
